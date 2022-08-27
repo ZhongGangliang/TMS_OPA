@@ -12,6 +12,7 @@ import scipy.cluster.vq
 import scipy.stats
 import argparse
 import matplotlib.pyplot as plt
+from analysis_config import *
 
 def cal_better_points(all_csv, percentile):
     '''
@@ -735,7 +736,7 @@ if __name__ == "__main__":
     output_path = dataPath + 'analysis_path/' + args['output'] + '/'
     if not os.path.exists(output_path):
         os.makedirs(output_path)
-    from analysis_tools.analysis_config import *
+    from analysis_config import *
     if args['cross']:
         # 预读取用于加速
         for res in subjectnum_result:

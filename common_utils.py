@@ -60,13 +60,15 @@ def get_simu_result(subject, simu_result_path):
     '''
     合并csv表格
     '''
-    lastOptPath = simu_result_path
+    from analysis_config import dataPath
+    lastOptPath = dataPath + str(subject) + '/' + str(simu_result_path) + '/'
     fnames = []
     for path, _, filenames in os.walk(lastOptPath):
         for file in filenames:
             if file.endswith('.csv') and file.startswith('optimalResults_'):
                 fnames.append(path + file)
     if len(fnames) == 0:
+        print('There is no csv file in ' + lastOptPath)
         return None
     file_hash = lastOptPath + get_file_md5(fnames) + 'pkl'
     # 检查文件是否存在
